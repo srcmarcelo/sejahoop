@@ -36,9 +36,9 @@ const CurrencySelect: React.FC<CurrencySelectProps> = ({
   };
 
   return (
-    <div className='w-36 h-full rounded-full bg-tertiary flex justify-center items-center'>
+    <div className='w-36 h-full rounded-full bg-tertiary flex justify-center items-center max-sm:w-24'>
       <select
-        className='text-lg px-4 rounded-full bg-tertiary space-x-3 font-medium text-white outline-none'
+        className='text-lg px-4 rounded-full bg-tertiary space-x-3 font-medium text-white outline-none max-sm:px-1 max-sm:text-sm'
         onChange={(e) => handleOptionSelect(e.target.value)}
         value={selectedOption}
       >

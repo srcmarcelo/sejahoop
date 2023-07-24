@@ -17,12 +17,12 @@ const HomeSection: React.FC = () => {
         className='opacity-10'
       />
 
-      <div className='flex justify-center items-center flex-col text-center w-full h-full mt-16 bg-tertiary'>
-        <h1 className='text-7xl text-white font-light font-sans max-w-4xl mx-auto z-10'>
+      <div className='flex justify-center items-center flex-col text-center w-full h-full mt-16 bg-tertiary max-md:px-4'>
+        <h1 className='text-7xl text-white font-light font-sans max-w-4xl mx-auto z-10 max-lg:text-6xl max-sm:text-5xl'>
           Parcele suas compras ou faça um pix no exterior com{' '}
           <strong>HoopBank</strong>
         </h1>
-        <p className='text-tertiaryLight font-bold text-md max-w-2xl mx-auto mt-12 z-10'>
+        <p className='text-tertiaryLight font-bold text-md max-w-2xl mx-auto mt-12 z-10 max-sm:text-sm'>
           Pague à vista usando o PIX ou em até 12 parcelas fixas em reais no
           cartão de crédito.
         </p>

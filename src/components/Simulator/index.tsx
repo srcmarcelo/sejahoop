@@ -49,7 +49,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
 
       <button
         onClick={onClose}
-        className='absolute top-16 right-16 rounded-full bg-tertiary text-white p-2 focus:outline-none'
+        className='absolute top-16 right-16 rounded-full bg-tertiary text-white p-2 focus:outline-none max-lg:right-4 max-md:right-1'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -67,12 +67,12 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
         </svg>
       </button>
 
-      <div className='bg-gray-200 bg-opacity-50 rounded-lg px-3 pt-6 relative w-5/12'>
+      <div className='bg-gray-200 bg-opacity-50 rounded-lg px-3 pt-6 relative w-auto max-sm:w-11/12'>
         <div className='bg-gray-400 bg-opacity-50 p-1 mb-6 rounded-lg flex w-full'>
           <div
             className={`px-12 py-2 flex-1 flex justify-center items-center ${
               ['parcel'].includes(mode) && 'bg-tertiary'
-            } rounded-lg transition-colors duration-400`}
+            } rounded-lg transition-colors duration-400 max-sm:px-4`}
           >
             <a
               className='text-lg cursor-pointer text-white w-full text-center'
@@ -84,7 +84,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
           <div
             className={`px-12 py-2 flex-1 flex justify-center items-center ${
               ['pix'].includes(mode) && 'bg-tertiary'
-            } rounded-lg transition-colors duration-400`}
+            } rounded-lg transition-colors duration-400 max-sm:px-4`}
           >
             <a
               className='text-lg cursor-pointer text-white w-full text-center'
@@ -94,6 +94,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
             </a>
           </div>
         </div>
+
         <div className='rounded-full bg-white w-full h-14 p-2 mb-4 flex justify-start items-center'>
           <CurrencySelect
             onSelect={setSelectedOption}
@@ -105,7 +106,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
             decimalSeparator='.'
             groupSeparator=' '
             onValueChange={(value) => setValue(value || '0')}
-            className='text-black outline-none pl-2 text-2xl flex-1'
+            className='text-black outline-none pl-2 text-2xl flex-1 max-sm:w-5/12'
           />
           <EnterButton
             onClick={() =>
@@ -113,16 +114,18 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
             }
           />
         </div>
+
         <div className='flex space-x-2 mb-4 text-white'>
           <div className='text-lg font-medium'>Taxa de câmbio:</div>
           <div className='text-lg font-bold'>{currencyValue}</div>
         </div>
+
         {convertedValue > 0 && (
           <div className='h-28 w-full mb-4 bg-white text-black flex flex-col justify-center items-end rounded-lg text-center'>
             <div className='text-4xl flex-1 flex justify-center items-center text-center w-full'>
               {convertedValue.toFixed(2)} BRL
             </div>
-            <div className='w-full rounded-b-lg flex justify-center items-center h-6 text-xs text-black bg-yellow-400'>
+            <div className='w-full rounded-b-lg flex justify-center items-center h-6 text-xs text-black bg-yellow-400 max-sm:h-9'>
               Os valores simulados são sujeitos à alteração e podem variar
               conforme loja conveniada.
             </div>
