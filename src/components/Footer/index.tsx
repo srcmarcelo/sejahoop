@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className='py-24 px-16 max-md:px-8 max-sm:px-0'>
+    <footer className='pb-4'>
       <div className='bg-footer p-28 flex flex-col justify-center text-center max-lg:p-14 max-md:px-6 max-sm:px-4 max-sm:py-8'>
         <h3 className='text-5xl font-light mb-4 max-lg:text-3xl max-sm:text-xl text-black'>
           JUNTE-SE À LISTA DE EMAILS

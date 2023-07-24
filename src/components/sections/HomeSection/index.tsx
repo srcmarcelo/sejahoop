@@ -8,7 +8,7 @@ const HomeSection: React.FC = () => {
   const [simulatorVisible, setSimulatorVisible] = React.useState(false);
 
   return (
-    <div className='flex justify-center items-center flex-1 h-screen'>
+    <div className='flex justify-center items-center flex-1 h-screen pt-24'>
       <Image
         src='/home.webp'
         alt='Home Background'
@@ -17,7 +17,7 @@ const HomeSection: React.FC = () => {
         className='opacity-10'
       />
 
-      <div className='flex justify-center items-center flex-col text-center w-full h-full pt-20 bg-tertiary max-md:px-4'>
+      <div className='flex justify-center items-center flex-col text-center w-full h-full bg-tertiary max-md:px-4'>
         <h1 className='text-7xl text-white font-light font-sans max-w-4xl mx-auto z-10 max-lg:text-6xl max-sm:text-5xl'>
           Parcele suas compras ou faça um pix no exterior com{' '}
           <strong>HoopBank</strong>
