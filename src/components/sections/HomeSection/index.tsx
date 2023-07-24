@@ -8,13 +8,13 @@ const HomeSection: React.FC = () => {
   const [simulatorVisible, setSimulatorVisible] = React.useState(false);
 
   return (
-    <div className='flex justify-center items-center flex-1 h-screen mt-10'>
+    <div className='flex justify-center items-center flex-1 h-screen pt-24'>
       <Image
         src='/home.webp'
         alt='Home Background'
         fill
         style={{ objectFit: 'cover', objectPosition: 'center' }}
-        className='opacity-10 mt-10'
+        className='opacity-10 pt-24'
       />
 
       <div className='flex justify-center items-center flex-col text-center w-full h-full bg-tertiary max-md:px-4'>
