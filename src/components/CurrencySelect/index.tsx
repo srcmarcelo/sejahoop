@@ -1,6 +1,6 @@
 import React from 'react';
 
-type OptionValues = 'USD' | 'EUR' | 'BRL';
+type OptionValues = 'USDT' | 'EUR' | 'BRL';
 
 interface CurrencySelectProps {
   selectedOption: string;
@@ -14,7 +14,7 @@ interface Option {
 
 const options: Option[] = [
   {
-    value: 'USD',
+    value: 'USDT',
     flag: '🇺🇸',
   },
   {
