@@ -1,6 +1,10 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import HomeSection from '@/components/sections/HomeSection';
+import MobileSection from '@/components/sections/MobileSection';
+import PaymentSection from '@/components/sections/PaymentSection';
+import StorekeeperSection from '@/components/sections/StorekeeperSection';
+import StoresSection from '@/components/sections/StoresSection';
 import Head from 'next/head';
 
 export default function Home() {
@@ -8,7 +12,10 @@ export default function Home() {
     <>
       <Head>
         <title>Seja Hoop</title>
-        <meta name='description' content='Faça um pix no exterior com HoopBank!' />
+        <meta
+          name='description'
+          content='Faça um pix no exterior com HoopBank!'
+        />
         <meta
           name='viewport'
           content='width=device-width, initial-scale=1, viewport-fit=cover'
@@ -19,6 +26,10 @@ export default function Home() {
       <main className='flex min-h-screen items-center justify-center'>
         <HomeSection />
       </main>
+      <MobileSection />
+      <StoresSection />
+      <PaymentSection />
+      <StorekeeperSection />
       <Footer />
     </>
   );

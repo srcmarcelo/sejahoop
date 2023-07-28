@@ -4,21 +4,21 @@ import CurrencySelect from '../CurrencySelect';
 import CurrencyInput from 'react-currency-input-field';
 import EnterButton from '../EnterButton';
 
-type OptionValues = 'USD' | 'EUR' | 'BRL';
+type OptionValues = 'USDT' | 'EUR' | 'BRL';
 
 interface SimulatorProps {
   onClose: () => void;
 }
 
 const prefixes = {
-  USD: 'US$ ',
+  USDT: 'US$ ',
   BRL: 'R$ ',
   EUR: '€ ',
 };
 
 const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
   const [mode, setMode] = useState<'parcel' | 'pix'>('parcel');
-  const [selectedOption, setSelectedOption] = useState<OptionValues>('USD');
+  const [selectedOption, setSelectedOption] = useState<OptionValues>('USDT');
   const [value, setValue] = useState<string>('0');
   const [currencyValue, setCurrencyValue] = useState<string>('0');
   const [convertedValue, setConvertedValue] = useState<number>(0);
@@ -33,7 +33,9 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
 
       const value = await res.json();
 
-      setCurrencyValue(value[`${selectedOption}BRL`]?.bid);
+      setCurrencyValue(
+        value[`${selectedOption === 'EUR' ? 'EURBRL' : 'USDBRLT'}`]?.ask
+      );
     };
 
     if (selectedOption === 'BRL') {

@@ -16,12 +16,17 @@ module.exports = {
         primary: '#1C3D8D',
         secondary: '#0D1B47',
         tertiary: '#2DA186',
+        tertiaryDark: '#248A77',
         tertiaryLight: '#5CEECC',
         footer: '#49F1C9',
       },
       fontSize: {
-        xxs: '0.6rem'
-      }
+        xxs: '0.6rem',
+      },
+      maxHeight: {
+        145: '580px',
+        165: '660px',
+      },
     },
   },
   plugins: [],
