@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import DetailsSection from '@/components/sections/DetailsSection';
 import HomeSection from '@/components/sections/HomeSection';
 import MobileSection from '@/components/sections/MobileSection';
 import PaymentSection from '@/components/sections/PaymentSection';
@@ -30,6 +31,7 @@ export default function Home() {
       <StoresSection />
       <PaymentSection />
       <StorekeeperSection />
+      <DetailsSection />
       <Footer />
     </>
   );

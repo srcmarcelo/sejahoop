@@ -22,11 +22,15 @@ module.exports = {
       },
       fontSize: {
         xxs: '0.6rem',
+        '4.5xl': '2.5rem'
       },
       maxHeight: {
         145: '580px',
         165: '660px',
       },
+      maxWidth: {
+        'xxs': '260px',
+      }
     },
   },
   plugins: [],
