@@ -4,17 +4,23 @@ import React, { useEffect, useState } from 'react';
 import Simulator from '../Simulator';
 import MenuButton from '../MenuButton';
 
-interface RedirectTagProps {
-  name: string;
+interface HeaderProps {
+  tab: string;
 }
 
-const RedirectTag: React.FC<RedirectTagProps> = ({ name }) => (
-  <a href='#' className='hover:text-tertiaryLight font-semibold text-base'>
+interface RedirectTagProps {
+  name: string;
+  href?: string;
+  current?: boolean;
+}
+
+const RedirectTag: React.FC<RedirectTagProps> = ({ name, current, href = '/' }) => (
+  <a href={href} data-current={current} className='hover:text-tertiaryLight font-semibold text-base data-[current=true]:text-tertiaryLight'>
     {name}
   </a>
 );
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderProps> = ({tab}) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [simulatorVisible, setSimulatorVisible] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
@@ -41,16 +47,16 @@ const Header: React.FC = () => {
     <header
       className={` ${
         scrollPosition > 0 ? 'bg-primary' : 'bg-secondary'
-      } text-white fixed w-full top-0 transition-colors duration-300 z-20`}
+      } text-white fixed w-full top-0 transition-colors duration-300 shadow-sm shadow-gray-700 z-20`}
     >
       <div className='container mx-auto flex items-center justify-around py-3 max-lg:justify-between max-lg:px-8 max-sm:px-4'>
         <Image src='/logo.webp' width={146} height={79} alt='logo' />
 
         {screenWidth >= 1024 && (
           <div className='flex space-x-12'>
-            <RedirectTag name='Início' />
-            <RedirectTag name='Quem somos' />
-            <RedirectTag name='Comerciantes' />
+            <RedirectTag name='Início' current={tab === 'home'} />
+            <RedirectTag name='Quem somos' current={tab === 'aboutUs'} href='quem-somos' />
+            <RedirectTag name='Comerciantes' current={tab === 'storeKeepers'} />
           </div>
         )}
 
@@ -67,8 +73,8 @@ const Header: React.FC = () => {
           </button>
         )}
 
-        {screenWidth < 1024 && (
-          <MenuButton />
+        {screenWidth < 1024 && screenWidth > 0 && (
+          <MenuButton tab={tab} />
         )}
       </div>
 

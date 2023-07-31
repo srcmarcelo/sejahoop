@@ -3,22 +3,28 @@ import React, { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Simulator from '../Simulator';
 
+interface MenuButtonProps {
+  tab: string;
+}
 interface RedirectTagProps {
   name: string;
+  href?: string;
+  current?: boolean;
 }
 
-const RedirectTag: React.FC<RedirectTagProps> = ({ name }) => (
+const RedirectTag: React.FC<RedirectTagProps> = ({ name, current, href = '/' }) => (
   <li className='py-2 text-center'>
     <a
-      href='#'
-      className='hover:text-tertiaryLight font-semibold text-base text-center'
+      href={href}
+      data-current={current}
+      className='hover:text-tertiaryLight font-semibold text-center text-base data-[current=true]:text-tertiaryLight'
     >
       {name}
     </a>
   </li>
 );
 
-const MenuButton: React.FC = () => {
+const MenuButton: React.FC<MenuButtonProps> = ({ tab }) => {
   const [simulatorVisible, setSimulatorVisible] = React.useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -60,9 +66,13 @@ const MenuButton: React.FC = () => {
           </svg>
         </button>
         <ul className='text-white text-2xl'>
-          <RedirectTag name='Início' />
-          <RedirectTag name='Quem somos' />
-          <RedirectTag name='Comerciantes' />
+          <RedirectTag name='Início' current={tab === 'home'} />
+          <RedirectTag
+            name='Quem somos'
+            current={tab === 'aboutUs'}
+            href='quem-somos'
+          />
+          <RedirectTag name='Comerciantes' current={tab === 'storeKeepers'} />
 
           <div className='flex justify-center items-center'>
             <button

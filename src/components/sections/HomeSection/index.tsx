@@ -8,7 +8,7 @@ const HomeSection: React.FC = () => {
   const [simulatorVisible, setSimulatorVisible] = React.useState(false);
 
   return (
-    <div className='flex justify-center items-center flex-1 h-screen pt-20'>
+    <div className='flex justify-center items-end flex-1 h-screen pt-20'>
       <Image
         src='/home.webp'
         alt='Home Background'
