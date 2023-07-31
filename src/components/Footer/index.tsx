@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             <div className='flex space-x-3'>
               <input
                 type='email'
-                id='emailInput'
+                id='email'
                 placeholder='Digite seu email'
                 className='border border-black w-full px-4 py-2 focus:outline-none focus:border-#49F1C9'
               />

@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import ContactSection from '@/components/sections/ContactSection';
 import DetailsSection from '@/components/sections/DetailsSection';
 import HomeSection from '@/components/sections/HomeSection';
 import MobileSection from '@/components/sections/MobileSection';
@@ -32,6 +33,7 @@ export default function Home() {
       <PaymentSection />
       <StorekeeperSection />
       <DetailsSection />
+      <ContactSection />
       <Footer />
     </>
   );

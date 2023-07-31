@@ -63,8 +63,6 @@ const MenuButton: React.FC = () => {
           <RedirectTag name='Início' />
           <RedirectTag name='Quem somos' />
           <RedirectTag name='Comerciantes' />
-          <RedirectTag name='Sobre' />
-          <RedirectTag name='Funcionalidades' />
 
           <div className='flex justify-center items-center'>
             <button

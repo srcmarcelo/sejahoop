@@ -12,7 +12,7 @@ const StorekeeperSection: React.FC = () => {
         <p className='text-2xl text-gray-700 font-semibold mb-16 text-center'>
           Atraia mais clientes e aumente sua receita usando o Hoop
         </p>
-        <button className='bg-primary hover:bg-white text-white hover:text-primary font-semibold py-2 px-4 border-primary hover:border-primary'>
+        <button className='bg-primary hover:bg-white text-white hover:text-primary font-semibold py-2 px-4 border border-primary hover:border-primary'>
           Conheça agora
         </button>
       </div>

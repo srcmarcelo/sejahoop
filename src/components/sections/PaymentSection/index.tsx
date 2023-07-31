@@ -3,7 +3,7 @@ import React from 'react';
 
 const PaymentSection: React.FC = () => {
   return (
-    <div className='flex justify-center items-center space-x-16 flex-1 py-12 max-lg:flex-col max-lg:space-x-0 max-lg:pt-0'>
+    <div className='flex justify-center items-center space-x-16 flex-1 pt-12 max-lg:flex-col max-lg:space-x-0 max-lg:pt-0'>
       <div className='flex flex-col justify-center items-start max-sm:items-center max-sm:px-4'>
         <h1 className='text-3xl font-bold text-black mb-2 max-w-sm'>Pagamento seguro</h1>
         <p className='text-base font-light text-black max-w-sm max-sm:text-center'>
