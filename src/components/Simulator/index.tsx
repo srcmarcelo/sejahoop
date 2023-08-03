@@ -1,5 +1,5 @@
 'use client';
-import React, { KeyboardEvent, useEffect, useState } from 'react';
+import React, { KeyboardEvent, useCallback, useEffect, useState } from 'react';
 import CurrencySelect from '../CurrencySelect';
 import CurrencyInput from 'react-currency-input-field';
 import EnterButton from '../EnterButton';
@@ -49,15 +49,22 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
     } else {
       fetchAll();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOption]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    console.log('type event:', event);
     if (event.key === 'Enter') {
       setConvertedValue(parseFloat(value || '0') * parseFloat(currencyValue));
     }
   };
+
+  const onChangeValue = useCallback(
+    (value?: string) => {
+      if (convertedValue) setConvertedValue(0);
+      setValue(value);
+    },
+    [convertedValue]
+  );
 
   return (
     <div className='fixed inset-0 flex items-center justify-center z-50'>
@@ -122,7 +129,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
             decimalSeparator='.'
             groupSeparator=' '
             min={0}
-            onValueChange={(value) => setValue(value)}
+            onValueChange={onChangeValue}
             onKeyDown={handleKeyDown}
             className='text-black outline-none pl-2 text-2xl flex-1 max-sm:w-5/12'
           />
