@@ -22,18 +22,18 @@ const HomeSection: React.FC = () => {
             divider
           </div>
           <div className='space-y-4 max-sm:space-y-2'>
-            <p className='text-zinc-900 font-semibold text-xl max-sm:text-base'>
+            <p className='text-zinc-900 font-semibold text-xl max-sm:text-sm'>
               Fazemos parte do arranjo de pagamento operando via registradora
               CIP (camara interbancária de Pagamentos), estamos no mercado desde
               2019, desenvolvemos um sistema de controle de pagamentos
               eletrônicos, cupons e vouchers.
             </p>
-            <p className='text-zinc-900 font-semibold text-xl max-sm:text-base'>
+            <p className='text-zinc-900 font-semibold text-xl max-sm:text-sm'>
               Com o sistema Hoop, podemos ajudar seu estabelecimento no Brasil e
               Estados Unidos com melhores taxas para máquinas de cartão física e
               e-commerce.
             </p>
-            <p className='text-zinc-900 font-semibold text-xl max-sm:text-base'>
+            <p className='text-zinc-900 font-semibold text-xl max-sm:text-sm'>
               Criamos uma forma de pagamento com os melhores serviços e
               tecnologia para garantir uma experiência rápida, fácil e segura.
             </p>

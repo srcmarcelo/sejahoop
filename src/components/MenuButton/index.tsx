@@ -12,7 +12,11 @@ interface RedirectTagProps {
   current?: boolean;
 }
 
-const RedirectTag: React.FC<RedirectTagProps> = ({ name, current, href = '/' }) => (
+const RedirectTag: React.FC<RedirectTagProps> = ({
+  name,
+  current,
+  href = '/',
+}) => (
   <li className='py-2 text-center'>
     <a
       href={href}
@@ -66,13 +70,17 @@ const MenuButton: React.FC<MenuButtonProps> = ({ tab }) => {
           </svg>
         </button>
         <ul className='text-white text-2xl'>
-          <RedirectTag name='Início' current={tab === 'home'} />
+          <RedirectTag name='Início' current={tab === '/'} />
           <RedirectTag
             name='Quem somos'
-            current={tab === 'aboutUs'}
+            current={tab === '/quem-somos'}
             href='quem-somos'
           />
-          <RedirectTag name='Comerciantes' current={tab === 'storeKeepers'} />
+          <RedirectTag
+            name='Comerciantes'
+            current={tab === '/comerciantes'}
+            href='comerciantes'
+          />
 
           <div className='flex justify-center items-center'>
             <button

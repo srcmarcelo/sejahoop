@@ -1,8 +1,10 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { KeyboardEvent, useEffect, useState } from 'react';
 import CurrencySelect from '../CurrencySelect';
 import CurrencyInput from 'react-currency-input-field';
 import EnterButton from '../EnterButton';
+import Table from './Table';
+import CancelButton from '../CancelButton';
 
 type OptionValues = 'USDT' | 'EUR' | 'BRL';
 
@@ -19,7 +21,7 @@ const prefixes = {
 const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
   const [mode, setMode] = useState<'parcel' | 'pix'>('parcel');
   const [selectedOption, setSelectedOption] = useState<OptionValues>('USDT');
-  const [value, setValue] = useState<string>('0');
+  const [value, setValue] = useState<string | undefined>('0');
   const [currencyValue, setCurrencyValue] = useState<string>('0');
   const [convertedValue, setConvertedValue] = useState<number>(0);
 
@@ -31,19 +33,30 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
         throw new Error('Failed to fetch data');
       }
 
-      const value = await res.json();
+      const result = await res.json();
 
-      setCurrencyValue(
-        value[`${selectedOption === 'EUR' ? 'EURBRL' : 'USDBRLT'}`]?.ask
-      );
+      const currencyValue =
+        result[`${selectedOption === 'EUR' ? 'EURBRL' : 'USDBRLT'}`]?.ask;
+
+      setCurrencyValue(currencyValue);
+
+      setConvertedValue(parseFloat(value || '0') * parseFloat(currencyValue));
     };
 
     if (selectedOption === 'BRL') {
       setCurrencyValue('1.00');
+      setConvertedValue(parseFloat(value || '0'));
     } else {
       fetchAll();
     }
-  }, [selectedOption]);
+  }, [selectedOption, value]);
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    console.log('type event:', event);
+    if (event.key === 'Enter') {
+      setConvertedValue(parseFloat(value || '0') * parseFloat(currencyValue));
+    }
+  };
 
   return (
     <div className='fixed inset-0 flex items-center justify-center z-50'>
@@ -69,7 +82,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
         </svg>
       </button>
 
-      <div className='bg-gray-200 bg-opacity-50 rounded-lg px-3 pt-6 relative w-auto max-sm:w-11/12'>
+      <div className='bg-gray-200 bg-opacity-50 rounded-lg px-3 py-6 relative w-auto max-h-[500px] overflow-y-auto border-y-8 border-gray-200 border-opacity-0 max-sm:w-11/12'>
         <div className='bg-gray-400 bg-opacity-50 p-1 mb-6 rounded-lg flex w-full'>
           <div
             className={`px-12 py-2 flex-1 flex justify-center items-center ${
@@ -107,14 +120,20 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
             value={value}
             decimalSeparator='.'
             groupSeparator=' '
-            onValueChange={(value) => setValue(value || '0')}
+            min={0}
+            onValueChange={(value) => setValue(value)}
+            onKeyDown={handleKeyDown}
             className='text-black outline-none pl-2 text-2xl flex-1 max-sm:w-5/12'
           />
-          <EnterButton
-            onClick={() =>
-              setConvertedValue(parseFloat(value) * parseFloat(currencyValue))
-            }
-          />
+          {convertedValue <= 0 ? (
+            <EnterButton
+              onClick={() =>
+                setConvertedValue(parseFloat(value || '0') * parseFloat(currencyValue))
+              }
+            />
+          ) : (
+            <CancelButton onClick={() => setValue('0')} />
+          )}
         </div>
 
         <div className='flex space-x-2 mb-4 text-white'>
@@ -122,17 +141,20 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
           <div className='text-lg font-bold'>{currencyValue}</div>
         </div>
 
-        {convertedValue > 0 && (
-          <div className='h-28 w-full mb-4 bg-white text-black flex flex-col justify-center items-end rounded-lg text-center'>
-            <div className='text-4xl flex-1 flex justify-center items-center text-center w-full'>
-              {convertedValue.toFixed(2)} BRL
+        {convertedValue > 0 &&
+          (mode === 'parcel' ? (
+            <Table value={convertedValue} />
+          ) : (
+            <div className='h-28 w-full bg-white text-black flex flex-col justify-center items-end rounded-lg text-center'>
+              <div className='text-4xl flex-1 flex justify-center items-center text-center w-full'>
+                {(convertedValue * 1.03).toFixed(2)} BRL
+              </div>
+              <div className='w-full rounded-b-lg flex justify-center items-center h-6 text-xs text-black bg-yellow-400 max-sm:h-9'>
+                Os valores simulados são sujeitos à alteração e podem variar
+                conforme loja conveniada.
+              </div>
             </div>
-            <div className='w-full rounded-b-lg flex justify-center items-center h-6 text-xs text-black bg-yellow-400 max-sm:h-9'>
-              Os valores simulados são sujeitos à alteração e podem variar
-              conforme loja conveniada.
-            </div>
-          </div>
-        )}
+          ))}
       </div>
     </div>
   );

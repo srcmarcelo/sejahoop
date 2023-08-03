@@ -32,8 +32,8 @@ const Footer: React.FC = () => {
           <p>© 2023 HoopBank</p>
         </div>
         <div className='space-x-4'>
-          <a href=''>Política de privacidade</a>
-          <a href=''>Política de cookies</a>
+          <a href='/politica-de-privacidade'>Política de privacidade</a>
+          <a href='/termos-de-uso'>Termos de uso</a>
         </div>
       </div>
     </footer>
