@@ -24,7 +24,7 @@ const Table: React.FC<TableProps> = ({ value }) => {
     <div className='w-full'>
       <table className='w-full table-auto'>
         <thead>
-          <tr className='bg-gray-200'>
+          <tr className='bg-gray-200 text-zinc-900'>
             <th className='px-4 py-2'>Parcelas</th>
             <th className='px-4 py-2'>Valor das Parcelas</th>
             <th className='px-4 py-2'>Valor Total</th>
@@ -32,7 +32,7 @@ const Table: React.FC<TableProps> = ({ value }) => {
         </thead>
         <tbody>
           {tableData.map((data, index) => (
-            <tr key={index} className='bg-white'>
+            <tr key={index} className='bg-white text-zinc-900'>
               <td className='px-4 py-2'>{data.parcel}x</td>
               <td className='px-4 py-2 text-xs whitespace-nowrap'>
                 R$ {' '}

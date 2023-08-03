@@ -14,7 +14,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main className='flex min-h-screen items-center justify-center'>
-        <div className='pt-36 px-4  text-justify'>
+        <div className='pt-36 px-4  text-justify text-zinc-900'>
           <h2>
             <span>1. Termos</span>
           </h2>
