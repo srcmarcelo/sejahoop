@@ -49,7 +49,8 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
     } else {
       fetchAll();
     }
-  }, [selectedOption, value]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedOption]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     console.log('type event:', event);
@@ -128,11 +129,18 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
           {convertedValue <= 0 ? (
             <EnterButton
               onClick={() =>
-                setConvertedValue(parseFloat(value || '0') * parseFloat(currencyValue))
+                setConvertedValue(
+                  parseFloat(value || '0') * parseFloat(currencyValue)
+                )
               }
             />
           ) : (
-            <CancelButton onClick={() => setValue('0')} />
+            <CancelButton
+              onClick={() => {
+                setValue('0');
+                setConvertedValue(0);
+              }}
+            />
           )}
         </div>
 
