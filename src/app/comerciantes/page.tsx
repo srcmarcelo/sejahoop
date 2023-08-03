@@ -1,6 +1,8 @@
 import ContactSection from '@/components/sections/ContactSection';
 import Head from 'next/head';
 import HomeSection from './sections/HomeSection';
+import AdvantageSection from './sections/AdvantagesSection';
+import DetailsSection from './sections/DetailsSection';
 
 export default function Home() {
   return (
@@ -17,6 +19,8 @@ export default function Home() {
       <main className='flex min-h-screen items-center justify-center'>
         <HomeSection />
       </main>
+      <AdvantageSection />
+      <DetailsSection />
       <ContactSection />
     </>
   );

@@ -1,6 +1,5 @@
-'use client';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 interface DetailProps {
   title: string;
@@ -19,20 +18,6 @@ const Detail: React.FC<DetailProps> = ({title, subtitle}) => (
 )
 
 const DetailsSection: React.FC = () => {
-  const [mobile, setMobile] = useState(false);
-
-  function getScreenWidth() {
-    setMobile(window.innerWidth < 640);
-  }
-
-  useEffect(() => {
-    getScreenWidth();
-    window.addEventListener('resize', getScreenWidth);
-    return () => {
-      window.removeEventListener('resize', getScreenWidth);
-    };
-  }, []);
-
   return (
     <div className='flex flex-col justify-center items-center py-14'>
       <div className='flex justify-center items-center mb-16 max-md:flex-col max-md:mb-8'>

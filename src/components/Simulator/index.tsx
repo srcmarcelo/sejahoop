@@ -51,7 +51,7 @@ const Simulator: React.FC<SimulatorProps> = ({ onClose }) => {
 
       <button
         onClick={onClose}
-        className='absolute top-16 right-16 rounded-full bg-tertiary text-white p-2 focus:outline-none max-lg:right-4 max-md:right-1'
+        className='absolute top-16 right-16 rounded-full bg-tertiary text-white p-2 focus:outline-none max-lg:right-4 max-lg:top-7'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'

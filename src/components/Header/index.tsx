@@ -3,10 +3,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import Simulator from '../Simulator';
 import MenuButton from '../MenuButton';
-
-interface HeaderProps {
-  tab: string;
-}
+import { getURL } from 'next/dist/shared/lib/utils';
 
 interface RedirectTagProps {
   name: string;
@@ -14,32 +11,42 @@ interface RedirectTagProps {
   current?: boolean;
 }
 
-const RedirectTag: React.FC<RedirectTagProps> = ({ name, current, href = '/' }) => (
-  <a href={href} data-current={current} className='hover:text-tertiaryLight font-semibold text-base data-[current=true]:text-tertiaryLight'>
+const RedirectTag: React.FC<RedirectTagProps> = ({
+  name,
+  current,
+  href = '/',
+}) => (
+  <a
+    href={href}
+    data-current={current}
+    className='hover:text-tertiaryLight font-semibold text-base data-[current=true]:text-tertiaryLight'
+  >
     {name}
   </a>
 );
 
-const Header: React.FC<HeaderProps> = ({tab}) => {
+const Header: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [simulatorVisible, setSimulatorVisible] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
 
+  const tab = getURL();
+
   const handleScroll = () => {
-    setScrollPosition(window.scrollY);
+    setScrollPosition(window?.scrollY);
   };
 
   function getScreenWidth() {
-    setScreenWidth(window.innerWidth);
+    setScreenWidth(window?.innerWidth);
   }
 
-  useEffect(() => {
+  useEffect(function onFirstMount() {
     getScreenWidth();
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', getScreenWidth);
+    window?.addEventListener('scroll', handleScroll);
+    window?.addEventListener('resize', getScreenWidth);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', getScreenWidth);
+      window?.removeEventListener('scroll', handleScroll);
+      window?.removeEventListener('resize', getScreenWidth);
     };
   }, []);
 
@@ -50,13 +57,23 @@ const Header: React.FC<HeaderProps> = ({tab}) => {
       } text-white fixed w-full top-0 transition-colors duration-300 shadow-sm shadow-gray-700 z-20`}
     >
       <div className='container mx-auto flex items-center justify-around py-3 max-lg:justify-between max-lg:px-8 max-sm:px-4'>
-        <Image src='/logo.webp' width={146} height={79} alt='logo' />
+        <a href='/'>
+          <Image src='/logo.webp' width={146} height={79} alt='logo' />
+        </a>
 
         {screenWidth >= 1024 && (
           <div className='flex space-x-12'>
-            <RedirectTag name='Início' current={tab === 'home'} />
-            <RedirectTag name='Quem somos' current={tab === 'aboutUs'} href='quem-somos' />
-            <RedirectTag name='Comerciantes' current={tab === 'storeKeepers'} />
+            <RedirectTag name='Início' current={tab === '/'} />
+            <RedirectTag
+              name='Quem somos'
+              current={tab === '/quem-somos'}
+              href='quem-somos'
+            />
+            <RedirectTag
+              name='Comerciantes'
+              current={tab === '/comerciantes'}
+              href='comerciantes'
+            />
           </div>
         )}
 
@@ -73,9 +90,7 @@ const Header: React.FC<HeaderProps> = ({tab}) => {
           </button>
         )}
 
-        {screenWidth < 1024 && screenWidth > 0 && (
-          <MenuButton tab={tab} />
-        )}
+        {screenWidth < 1024 && screenWidth > 0 && <MenuButton tab={tab} />}
       </div>
 
       {simulatorVisible && (

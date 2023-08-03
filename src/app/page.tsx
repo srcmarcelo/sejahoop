@@ -1,5 +1,3 @@
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 import ContactSection from '@/components/sections/ContactSection';
 import DetailsSection from '@/components/sections/DetailsSection';
 import HomeSection from '@/components/sections/HomeSection';
@@ -24,7 +22,6 @@ export default function Home() {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Header tab='home' />
       <main className='flex min-h-screen items-center justify-center'>
         <HomeSection />
       </main>
@@ -34,7 +31,6 @@ export default function Home() {
       <StorekeeperSection />
       <DetailsSection />
       <ContactSection />
-      <Footer />
     </>
   );
 }
