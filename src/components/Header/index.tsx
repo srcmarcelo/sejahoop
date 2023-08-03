@@ -29,8 +29,7 @@ const Header: React.FC = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [simulatorVisible, setSimulatorVisible] = useState(false);
   const [screenWidth, setScreenWidth] = useState(0);
-
-  const tab = getURL();
+  const [tab, setTab] = useState<string>('');
 
   const handleScroll = () => {
     setScrollPosition(window?.scrollY);
@@ -41,6 +40,9 @@ const Header: React.FC = () => {
   }
 
   useEffect(function onFirstMount() {
+    const tab = getURL();
+    setTab(tab);
+
     getScreenWidth();
     window?.addEventListener('scroll', handleScroll);
     window?.addEventListener('resize', getScreenWidth);
